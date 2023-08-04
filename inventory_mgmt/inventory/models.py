@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class InventoryItem(models.Model):
-	name = models.CharField(max_length=200)
+	brand = models.CharField(max_length=200, default='n/a')
+	line = models.CharField(max_length=200, default='n/a')
+	name = models.CharField(max_length=200, default='n/a')
+	color = models.CharField(max_length=200, default='n/a')
 	quantity = models.IntegerField()
 	category = models.ForeignKey('Category', on_delete=models.SET_NULL, blank=True, null=True)
 	date_created = models.DateTimeField(auto_now_add=True)
@@ -19,3 +22,4 @@ class Category(models.Model):
 
 	def __str__(self):
 		return self.name
+	

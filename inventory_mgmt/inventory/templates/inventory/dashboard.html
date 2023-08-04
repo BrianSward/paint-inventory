@@ -29,7 +29,10 @@
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
+						<th scope="col">Brand</th>
+						<th scope="col">Line</th>
 						<th scope="col">Name</th>
+						<th scope="col">Color</th>
 						<th scope="col">Qty</th>
 						<th scope="col">Category</th>
 						<th scope="col"></th> 
@@ -44,6 +47,8 @@
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
+						<td>-</td>
+						<td>-</td>						
 						<td></td>
 					</tr>
 					{% endif %}
@@ -51,13 +56,17 @@
 					{% for item in items %}
 					<tr>
 						<th scope="row">{{ item.id }}</th>
+						<td>{{ item.brand }}</td>
+						<td>{{ item.line }}</td>
 						<td>{{ item.name }}</td>
+						<td>{{ item.color }}</td>
 						{% if item.id in low_inventory_ids %}
 							<td class="text-danger">{{ item.quantity }}</td>
 						{% else %}
 							<td class="text-success">{{ item.quantity }}</td>
 						{% endif %}
 						<td>{{ item.category.name }}</td>
+
 						<td><a href="{% url 'edit-item' item.id %}" class="btn btn-outline-secondary">Edit</a></td>
 						<td><a href="{% url 'delete-item' item.id %}" class="btn btn-secondary">Delete</a></td>
 					</tr>
